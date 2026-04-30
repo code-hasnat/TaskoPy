@@ -212,7 +212,7 @@ If you encounter any issues or have questions:
 
 ## Roadmap
 
-- [ ] Add task dependencies
+- [x] Add task dependencies
 - [ ] Implement task comments
 - [ ] Add file attachments
 - [ ] Team collaboration features

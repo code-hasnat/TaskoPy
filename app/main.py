@@ -32,6 +32,7 @@ app.include_router(tasks.router)
 def root():
     return {"message": "Welcome to TaskFlow API"}
 
+# Health check endpoint
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}

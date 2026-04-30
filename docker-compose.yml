@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: taskopy
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: taskopy_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://taskflow:taskflow123@db:5432/taskflow_db
+      SECRET_KEY: aman1234
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+    volumes:
+      - ./app:/app
+
+volumes:
+  postgres_data:
